@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Income</title>
+</head>
+
+<body>
+
+<h1>Add Income</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>Source</label><br>
+<input type="text" name="source"><br><br>
+
+<label>Amount</label><br>
+<input type="number" name="amount"><br><br>
+
+<label>Date</label><br>
+<input type="date" name="date"><br><br>
+
+<button type="submit">Add Income</button>
+
+</form>
+
+</body>
+</html>

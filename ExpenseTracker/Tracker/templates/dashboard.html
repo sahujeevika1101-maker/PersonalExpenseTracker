@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+<h1>Expense Tracker Dashboard</h1>
+
+<a href="{% url 'add_expense' %}">Add Expense</a> |
+<a href="{% url 'add_income' %}">Add Income</a> |
+<a href="{% url 'logout' %}">Logout</a>
+
+<hr>
+
+<h3>Total Income : {{total_income}}</h3>
+<h3>Total Expense : {{total_expense}}</h3>
+<h3>Balance : {{balance}}</h3>
+
+<hr>
+
+<h2>Expense List</h2>
+
+<table border="1">
+
+<tr>
+<th>Title</th>
+<th>Amount</th>
+<th>Category</th>
+<th>Date</th>
+<th>Delete</th>
+</tr>
+
+{% for expense in expenses %}
+
+<tr>
+
+<td>{{expense.title}}</td>
+<td>{{expense.amount}}</td>
+<td>{{expense.category}}</td>
+<td>{{expense.date}}</td>
+
+<td>
+<a href="{% url 'delete_expense' expense.id %}">Delete</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
