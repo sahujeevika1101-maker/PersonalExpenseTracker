@@ -81,7 +81,7 @@ def add_expense(request):
     if request.method == "POST":
 
         title = request.POST.get('title')
-        amount = request.POST.get('amount')
+        amount = float(request.POST.get('amount'))
         category = request.POST.get('category')
         date = request.POST.get('date')
 
