@@ -18,7 +18,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('Home')
 
     return render(request, 'login.html')
 
@@ -51,9 +51,9 @@ def logout_view(request):
     return redirect('login')
 
 
-# DASHBOARD
+# HOME
 @login_required
-def dashboard(request):
+def Home(request):
 
     expenses = Expense.objects.filter(user=request.user)
     income = Income.objects.filter(user=request.user)
@@ -71,7 +71,7 @@ def dashboard(request):
         'balance': balance
     }
 
-    return render(request, 'dashboard.html', context)
+    return render(request, 'home.html', context)
 
 
 # ADD EXPENSE
@@ -95,7 +95,7 @@ def add_expense(request):
 
         expense.save()
 
-        return redirect('dashboard')
+        return redirect('Home')
 
     return render(request, 'expense.html')
 
@@ -119,7 +119,7 @@ def add_income(request):
 
         income.save()
 
-        return redirect('dashboard')
+        return redirect('Home')
 
     return render(request, 'income.html')
 
@@ -141,4 +141,4 @@ def delete_expense(request, id):
 
     expense.delete()
 
-    return redirect('dashboard')
+    return redirect('Home')
